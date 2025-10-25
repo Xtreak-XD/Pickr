@@ -17,6 +17,7 @@ function App() {
             <Route path={"/"} element={<Home/>} />
             <Route path={"/settings"} element={<Settings/>} />
             <Route path={"/profile"} element={<Profile/>} />
+            
           </Routes>
         </div>
 

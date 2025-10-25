@@ -1,16 +1,20 @@
 import { React, useState } from 'react'
 import { Card } from "../components/Card"
+import { CardPopup } from "../components/CardPopUp";
+import { AnimatePresence } from "framer-motion";
+
 
 const test = [
-  {name: "Headphones", image: "/No Image.png", price: "20.99"},
-  {name: "Phone", image: "/No Image.png", price: "200.99"},
-  {name: "Shoes", image: "/No Image.png", price: "60.00"}
+  {name: "Headphones", image: "/No Image.png", price: "20.99", description: "Noise-cancelling wireless headphones.", rating: 4.5, tags: ["Audio", "Electronics"]},
+  {name: "Phone", image: "/No Image.png", price: "200.99", description: "Latest smartphone with great camera.", rating: 4.2, tags: ["Mobile", "Electronics"]},
+  {name: "Shoes", image: "/No Image.png", price: "60.00", description: "Comfortable running shoes.", rating: 4.0, tags: ["Sports", "Footwear"]}
 ]
  
 export const Home = () => {
   const [index, setIndex] = useState(0)
   const [message, setMessage] = useState("")
   const [bgColor, setBgColor] = useState("bg-black-700")
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const handleSwipe = (dir) => {
     if (dir === "like") {
@@ -47,7 +51,14 @@ export const Home = () => {
         productImage={product.image}
         productPrice={product.price}
         onSwipe={handleSwipe}
+        onImageClick={() => setSelectedProduct(product)}
       />
+      <AnimatePresence>
+        {selectedProduct && <CardPopup
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />}
+        </AnimatePresence>
     </div>
   )
 }
