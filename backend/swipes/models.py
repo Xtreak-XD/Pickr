@@ -8,22 +8,23 @@ class SwipeType(models.TextChoices):
 
 class Swipe(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="swipes")
-    product = models.ForeignKey("listings.Product", on_delete=models.CASCADE, related_name="swipes")
+    listing = models.ForeignKey("listings.Listing", on_delete=models.CASCADE, related_name="swipes")
     action = models.CharField(max_length=10, choices=SwipeType.choices)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = [("user", "product")]
+        unique_together = [("user", "listing")]
         indexes = [
             models.Index(fields=["user", "created_at"]),
-            models.Index(fields=["product", "created_at"]),
+            models.Index(fields=["listing", "created_at"]),
         ]
 
 class Match(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="matches")
-    product = models.ForeignKey("listings.Product", on_delete=models.CASCADE, related_name="matches")
+    listing = models.ForeignKey("listings.Listing", on_delete=models.CASCADE, related_name="matches")
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = [("user", "product")]
+        unique_together = [("user", "listing")]
+        indexes = [models.Index(fields=["user", "created_at"])]
         indexes = [models.Index(fields=["user", "created_at"])]
