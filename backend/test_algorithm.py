@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from backend.Algorithm import run_recommendation_system, create_user_item_matrix, get_recommendations
+from liftoff.Algorithm import run_recommendation_system, create_user_item_matrix, get_recommendations
 
 def create_sample_data():
     """Create sample interaction data from the provided CSV format."""
