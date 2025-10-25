@@ -39,3 +39,5 @@ lerna-debug.log*
 .env
 myenv/
 backend/db.sqlite3
+
+.github/
