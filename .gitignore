@@ -36,4 +36,8 @@ lerna-debug.log*
 *.local
 .history
 
+.env
+myenv/
+backend/db.sqlite3
+
 .github/
