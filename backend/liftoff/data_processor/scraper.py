@@ -13,7 +13,7 @@ from playwright_stealth import Stealth
 from typing import List, Dict, Optional
 import random, time
 
-main_categories: List[str] = [ "https://www.amazon.com/b?node=7141123011"]
+main_categories: List[str] = [ "https://www.amazon.com/b?node=165793011"]
 
 temp_links: List[str] = []
 
