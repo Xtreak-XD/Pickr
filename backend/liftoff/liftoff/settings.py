@@ -55,7 +55,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'liftoff.urls'
 
@@ -164,5 +163,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",  # Vite local dev
     "http://localhost:5173",
 ]
-
+CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOW_CREDENTIALS = True
+
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+DEBUG = False
