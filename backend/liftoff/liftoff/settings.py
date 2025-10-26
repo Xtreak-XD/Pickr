@@ -141,10 +141,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = [
-    "https://knighthacks.netlify.app",
-    "http://127.0.0.1:3000",
-    "https://reqbin.com",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "https://knighthacks.netlify.app",
+#     "http://127.0.0.1:5173",  # Vite local dev
+#     "http://localhost:5173",
+# ]
 
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_CREDENTIALS = True
