@@ -167,5 +167,4 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOW_CREDENTIALS = True
 
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 DEBUG = False
