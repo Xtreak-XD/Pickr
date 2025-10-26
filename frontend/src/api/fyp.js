@@ -1,10 +1,10 @@
-// api/fyp.js
-const API_BASE = import.meta.env.VITE_API_URL;
+const API_BASE = "https://roary.up.railway.app"; 
+// in .env: VITE_API_URL=https://roary.up.railway.app
 
 export async function fetchFYP() {
-  console.log("API_BASE =", API_BASE); // should print your Railway URL
+  console.log("API_BASE =", API_BASE);
 
-  const res = await fetch(`${API_BASE}/api/categories/fyp`);
+  const res = await fetch(`${API_BASE}/api/categories/fyp`); // ✅ correct
   console.log("Fetching from:", res.url, "Status:", res.status);
 
   if (!res.ok) {
