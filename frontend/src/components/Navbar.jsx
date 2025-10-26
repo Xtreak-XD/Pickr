@@ -13,7 +13,7 @@ export const NavBar = () => {
 
     const handleChange = (event, newValue) => {
         navigate(newValue);
-        setValue(location.pathname);
+        setValue(newValue);
     }
 
     const hiddenPaths = ['/login']

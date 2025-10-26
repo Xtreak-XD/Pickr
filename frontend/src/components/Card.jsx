@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export const Card = ({ productName, productImage, productPrice, onSwipe }) => {
+export const Card = ({ productName, productImage, productPrice, onSwipe, onImageClick }) => {
   const handleSwipe = (offsetY) => {
     if (offsetY < -100) {
       onSwipe("like");
@@ -18,8 +18,9 @@ export const Card = ({ productName, productImage, productPrice, onSwipe }) => {
       onDragEnd={(event, info) => {
         handleSwipe(info.offset.y);
       }}
+      onClick={onImageClick}
       whileTap={{ scale: 0.90, rotate: 3 }} // small press effect
-      className="relative w-64 sm:w-80 md:w-96 lg:w-[28rem] aspect-square rounded-xl overflow-hidden shadow-2xl"
+      className="relative w-60 sm:w-74 md:w-86 lg:w-100 aspect-square rounded-xl overflow-hidden shadow-2xl"
     >
       {/* Image */}
       <div className="w-full h-full overflow-hidden">

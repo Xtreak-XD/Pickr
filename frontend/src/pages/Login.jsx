@@ -18,7 +18,7 @@ export const Login = () => {
       <h1 className="text-3xl font-bold text-black mb-6">Login</h1>
 
       {/* Login box */}
-      <div className="flex flex-col items-center gap-4 w-64 sm:w-64 md:w-80 lg:w-96 p-6 bg-[#0F4C75] rounded-xl shadow-lg">
+      <div className="flex flex-col items-center gap-4 w-64 sm:w-64 md:w-80 lg:w-96 p-6 bg-[#F4F4F4]/80 rounded-xl shadow-lg ">
         {/* Username */}
         <input
           type="text"
@@ -41,11 +41,11 @@ export const Login = () => {
         <div className="flex gap-4 mt-4">
           <button
             onClick={handleLogin}
-            className="bg-[#BBE1FA] hover:bg-amber-700 text-white font-semibold px-4 py-2 rounded-md"
+            className="bg-[#9ed5f9] hover:bg-amber-700 text-white font-semibold px-4 py-2 rounded-md"
           >
             Log In
           </button>
-          <button onClick={handleSignUp}  className="bg-[#BBE1FA] hover:bg-cyan-900 text-white font-semibold px-4 py-2 rounded-md">
+          <button onClick={handleSignUp}  className="bg-[#9ed5f9] hover:bg-amber-700 text-white font-semibold px-4 py-2 rounded-md">
             Sign Up
           </button>
         </div>
