@@ -1,7 +1,8 @@
-const API_BASE = "https://your-railway-app.up.railway.app/categories";
+// api/tech.js
+const API_BASE = import.meta.env.VITE_API_URL;
 
 export async function fetchTech() {
-  const res = await fetch(`${API_BASE}/tech`);
+  const res = await fetch(`${API_BASE}/api/categories/tech`);
   if (!res.ok) throw new Error("Failed to fetch tech items");
   return res.json();
 }

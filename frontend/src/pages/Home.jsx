@@ -1,4 +1,4 @@
-import { useRef, useState, useLayoutEffect } from 'react'
+import { useRef, useState, useLayoutEffect, useEffect } from 'react'
 import { Card } from "../components/Card"
 import { CardPopup } from "../components/CardPopUp";
 import { AnimatePresence } from "framer-motion";
@@ -7,6 +7,7 @@ import { fetchFYP } from "../api/fyp";
 import { CategoryTabs } from "../components/CategoryTabs"; // import tabs
 
 export const Home = () => {
+  const [items, setItems] = useState([])   // ✅ added this
   const [index, setIndex] = useState(0)
   const [message, setMessage] = useState("")
   const [bgColor, setBgColor] = useState("bg-black-700")
@@ -15,7 +16,7 @@ export const Home = () => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [showConfetti, setShowConfetti] = useState(false);
 
-  // fetch from your Django backend here
+  // fetch from Django backend
   useEffect(() => {
     fetchFYP()
       .then(data => setItems(data))
@@ -47,14 +48,13 @@ export const Home = () => {
       setShowConfetti(false)
     }
 
-    // after 500ms show next product
     setTimeout(() => {
       setMessage("")
       setIndex((prev) => prev + 1)
     }, 500)
   }
-  
-  const product = test[index];
+
+  const product = items[index]   // fixed from `item`
 
   if (!product) {
     return <p>NO MORE ITEMS</p>;
@@ -65,7 +65,7 @@ export const Home = () => {
       ref={containerRef} 
       className="relative flex flex-col items-center justify-center min-h-[calc(100vh-4rem)]"
     >
-      {/* category buttons go here */}
+      {/* ✅ category buttons at the top */}
       <div className="absolute top-2 left-0 right-0 flex justify-center">
         <CategoryTabs />
       </div>
@@ -88,16 +88,14 @@ export const Home = () => {
         />
       )}
 
-      {/* Card */}
       <Card
-        productName={product.name}
-        productImage={product.image}
+        productName={product.title}
+        productImage={product.img_link}
         productPrice={product.price}
         onSwipe={handleSwipe}
         onImageClick={() => setSelectedProduct(product)}
       />
 
-      {/* Button directly under card */}
       <button
         onClick={() => handleSwipe("dislike")}
         className="mt-6 px-6 py-3 rounded-full bg-red-600 text-white font-semibold shadow-md hover:bg-red-700 transition"
@@ -108,7 +106,7 @@ export const Home = () => {
       <AnimatePresence>
         {selectedProduct && (
           <CardPopup
-            product={selectedProduct}
+            product={product}
             onClose={() => setSelectedProduct(null)}
           />
         )}

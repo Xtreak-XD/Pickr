@@ -1,4 +1,4 @@
-const API_BASE = "https://your-railway-app.up.railway.app/categories";
+const API_BASE = import.meta.env.VITE_API_URL;
 
 export async function fetchAuto() {
   const res = await fetch(`${API_BASE}/auto`);
