@@ -54,6 +54,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+
 ROOT_URLCONF = 'liftoff.urls'
 
 TEMPLATES = [
@@ -141,7 +143,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     "https://knighthacks.netlify.app",
-    "http://localhost:3000", 
     "http://127.0.0.1:3000",
     "https://reqbin.com",
 ]
