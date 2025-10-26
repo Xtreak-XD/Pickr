@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -85,6 +86,23 @@ WSGI_APPLICATION = 'liftoff.wsgi.application'
 # os.environ.setdefault("PGHOST", "switchyard.proxy.rlwy.net")
 # os.environ.setdefault("PGPORT", "46820")
 
+DATABASE_URL = os.environ.get("DATABASE_URL")
+if DATABASE_URL:
+    # Production/Staging on Railway: Use the environment variable
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=DATABASE_URL,
+            conn_max_age=600 # Optional: keep connections alive for performance
+        )
+    }
+else:
+    # Local Development: Fallback to SQLite or a locally defined DB
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
