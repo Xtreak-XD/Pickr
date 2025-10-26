@@ -162,6 +162,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://knighthacks.netlify.app",
     "http://127.0.0.1:5173",  # Vite local dev
     "http://localhost:5173",
+    'https://knighthacks.netlify.app',
 ]
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOW_CREDENTIALS = True
