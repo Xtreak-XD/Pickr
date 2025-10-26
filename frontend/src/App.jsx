@@ -5,6 +5,7 @@ import { Home } from './pages/Home'
 import { Profile } from './pages/Profile'
 import { Settings } from './pages/Settings'
 import { Login } from './pages/Login'
+import { Tech } from './pages/Tech'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path={"/"} element={<Home/>} />
             <Route path={"/settings"} element={<Settings/>} />
             <Route path={"/profile"} element={<Profile/>} />
+            <Route path={"/tech"} element={<Tech/>}></Route>
           </Routes>
         </div>
 
