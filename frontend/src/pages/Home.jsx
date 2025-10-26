@@ -39,7 +39,7 @@ export const Home = () => {
   }
 
   return (
-    <div className="grow flex items-center justify-center relative">
+    <div className="flex flex-1 items-center justify-center relative min-h-[calc(100vh-4rem)]">
       {message && (
         <div id = "message" className={`absolute top-10 text-white px-4 py-2 rounded-xl shadow-lg z-10 ${bgColor}`}>
           {message}

@@ -20,7 +20,7 @@ export const Card = ({ productName, productImage, productPrice, onSwipe, onImage
       }}
       onClick={onImageClick}
       whileTap={{ scale: 0.90, rotate: 3 }} // small press effect
-      className="relative w-60 sm:w-76 md:w-92   lg:w-[28rem] aspect-square rounded-xl overflow-hidden shadow-2xl"
+      className="relative w-60 sm:w-74 md:w-86 lg:w-100 aspect-square rounded-xl overflow-hidden shadow-2xl"
     >
       {/* Image */}
       <div className="w-full h-full overflow-hidden">
