@@ -36,8 +36,7 @@ export const Profile = ({ userProp }) => {
 
   return (
     <div className="relative w-full">
-      {/* Red banner at top */}
-      <div className="w-full h-36 bg-[#9ed5f9]" />
+      <div className="w-full h-36 bg-[#CF7500]" />
 
       {/* Profile picture overlapping banner */}
       <div className="absolute top-20 left-1/2 transform -translate-x-1/2 w-32 h-32 rounded-full border-4 border-white overflow-hidden shadow-lg bg-gray-200">
