@@ -63,7 +63,7 @@ export const Settings = () => {
   };
 
   return (
-    <div className="min-h-screen w-full px-4 sm:px-6 lg:px-8 pt-6 pb-24">
+    <div className="w-full px-4 sm:px-6 lg:px-8 pt-6 pb-24">
       <h1 className="text-2xl font-bold mb-6">Settings</h1>
 
       <div className="bg-white/90 rounded-xl border border-gray-200 shadow-sm p-5 space-y-5">
@@ -137,19 +137,19 @@ export const Settings = () => {
       <div className="mt-4 flex gap-3">
         <button
           onClick={reset}
-          className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50"
+          className="rounded-lg bg-black border-gray-300 text-white px-4 py-2 text-sm font-medium hover:bg-gray-900 cursor-pointer"
         >
           Reset
         </button>
         <button
           onClick={save}
-          className="rounded-lg bg-black text-white px-4 py-2 text-sm font-medium hover:bg-gray-900"
+          className="rounded-lg bg-black text-white px-4 py-2 text-sm font-medium hover:bg-gray-900 cursor-pointer"
         >
           Save changes
         </button>
         <a
           href="/login"
-          className="ml-auto rounded-lg border border-red-300 text-red-600 px-4 py-2 text-sm font-medium hover:bg-red-50"
+          className="ml-auto rounded-lg border border-red-300 text-red-600 px-4 py-2 text-sm font-medium hover:bg-red-50 cursor-pointer"
         >
           Sign out
         </a>
