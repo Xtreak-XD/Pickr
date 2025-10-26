@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'liftoff.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-os.environ.setdefault("PGDATABASE", "railway")
-os.environ.setdefault("PGUSER", "postgres")
-os.environ.setdefault("PGPASSWORD", "iZtqVsGfmkLECSRHWaVcmzApACxvfhUB")
-os.environ.setdefault("PGHOST", "switchyard.proxy.rlwy.net")
-os.environ.setdefault("PGPORT", "46820")
+# os.environ.setdefault("PGDATABASE", "railway")
+# os.environ.setdefault("PGUSER", "postgres")
+# os.environ.setdefault("PGPASSWORD", "iZtqVsGfmkLECSRHWaVcmzApACxvfhUB")
+# os.environ.setdefault("PGHOST", "switchyard.proxy.rlwy.net")
+# os.environ.setdefault("PGPORT", "46820")
 
 DATABASES = {
     'default': {
