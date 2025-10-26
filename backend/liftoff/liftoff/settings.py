@@ -143,6 +143,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://knighthacks.netlify.app",
     "http://localhost:3000", 
     "http://127.0.0.1:3000",
+    "https://reqbin.com/",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
