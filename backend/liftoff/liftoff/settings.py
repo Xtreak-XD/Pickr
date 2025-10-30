@@ -55,6 +55,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# CORS_ALLOWED_ORIGINS = [
+#     "http://127.0.0.1:5173",
+#     "http://localhost:5173",
+#     "https://knighthacks.netlify.app",
+# ]
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 ROOT_URLCONF = 'liftoff.urls'
 
@@ -79,39 +86,22 @@ WSGI_APPLICATION = 'liftoff.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# os.environ.setdefault("PGDATABASE", "railway")
-# os.environ.setdefault("PGUSER", "postgres")
-# os.environ.setdefault("PGPASSWORD", "iZtqVsGfmkLECSRHWaVcmzApACxvfhUB")
-# os.environ.setdefault("PGHOST", "switchyard.proxy.rlwy.net")
-# os.environ.setdefault("PGPORT", "46820")
+os.environ.setdefault("PGDATABASE", "railway")
+os.environ.setdefault("PGUSER", "postgres")
+os.environ.setdefault("PGPASSWORD", "iZtqVsGfmkLECSRHWaVcmzApACxvfhUB")
+os.environ.setdefault("PGHOST", "switchyard.proxy.rlwy.net")
+os.environ.setdefault("PGPORT", "46820")
 
-DATABASE_URL = os.environ.get("DATABASE_URL")
-if DATABASE_URL:
-    # Production/Staging on Railway: Use the environment variable
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=DATABASE_URL,
-            conn_max_age=600 # Optional: keep connections alive for performance
-        )
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ["PGDATABASE"],
+        'USER': os.environ["PGUSER"],
+        'PASSWORD': os.environ["PGPASSWORD"],
+        'HOST': os.environ["PGHOST"],
+        'PORT': os.environ["PGPORT"],
     }
-else:
-    # Local Development: Fallback to SQLite or a locally defined DB
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.environ["PGDATABASE"],
-#         'USER': os.environ["PGUSER"],
-#         'PASSWORD': os.environ["PGPASSWORD"],
-#         'HOST': os.environ["PGHOST"],
-#         'PORT': os.environ["PGPORT"],
-#     }
-# }
+}
 
 
 # Password validation
@@ -157,14 +147,3 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-CORS_ALLOWED_ORIGINS = [
-    "https://knighthacks.netlify.app",
-    "http://127.0.0.1:5173",  # Vite local dev
-    "http://localhost:5173",
-    'https://knighthacks.netlify.app',
-]
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOW_CREDENTIALS = True
-
-DEBUG = False
