@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*x8!4*z0%poa0a64&m*%5i6pchh20s+dqc-f*wh4slm#_6eg)6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -86,23 +86,29 @@ WSGI_APPLICATION = 'liftoff.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-os.environ.setdefault("PGDATABASE", "railway")
-os.environ.setdefault("PGUSER", "postgres")
-os.environ.setdefault("PGPASSWORD", "iZtqVsGfmkLECSRHWaVcmzApACxvfhUB")
-os.environ.setdefault("PGHOST", "switchyard.proxy.rlwy.net")
-os.environ.setdefault("PGPORT", "46820")
+# os.environ.setdefault("PGDATABASE", "railway")
+# os.environ.setdefault("PGUSER", "postgres")
+# os.environ.setdefault("PGPASSWORD", "iZtqVsGfmkLECSRHWaVcmzApACxvfhUB")
+# os.environ.setdefault("PGHOST", "switchyard.proxy.rlwy.net")
+# os.environ.setdefault("PGPORT", "46820")
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.environ["PGDATABASE"],
+#         'USER': os.environ["PGUSER"],
+#         'PASSWORD': os.environ["PGPASSWORD"],
+#         'HOST': os.environ["PGHOST"],
+#         'PORT': os.environ["PGPORT"],
+#     }
+# }
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ["PGDATABASE"],
-        'USER': os.environ["PGUSER"],
-        'PASSWORD': os.environ["PGPASSWORD"],
-        'HOST': os.environ["PGHOST"],
-        'PORT': os.environ["PGPORT"],
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600
+    )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
