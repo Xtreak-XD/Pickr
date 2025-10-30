@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
+from dotenv import load_dotenv
 
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*x8!4*z0%poa0a64&m*%5i6pchh20s+dqc-f*wh4slm#_6eg)6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ["*"]
 
@@ -55,11 +57,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://127.0.0.1:5173",
-#     "http://localhost:5173",
-#     "https://knighthacks.netlify.app",
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:5173",
+    "http://localhost:5173",
+    "https://knighthacks.netlify.app",
+    "https://roary.up.railway.app",
+]
 CORS_ALLOW_ALL_ORIGINS = True
 
 
