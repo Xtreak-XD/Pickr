@@ -1,5 +1,5 @@
 // const API_BASE = "https://roary.up.railway.app"; 
-const API_BASE = "https://backend-production-6987.up.railway.app/";
+const API_BASE = "https://backend-production-6987.up.railway.app";
 // in .env: VITE_API_URL=https://roary.up.railway.app
 
 export async function fetchFYP() {
