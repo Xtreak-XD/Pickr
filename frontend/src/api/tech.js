@@ -1,5 +1,5 @@
 // api/tech.js
-const API_BASE = "http://127.0.0.1:8000/";
+const API_BASE = "https://backend-production-6987.up.railway.app/";
 
 export async function fetchTech() {
   const res = await fetch(`${API_BASE}/api/categories/tech`);
