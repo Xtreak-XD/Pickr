@@ -23,7 +23,9 @@ export const Tech = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-4rem)]">
       {/* Category buttons at the top */}
-      <CategoryTabs />
+      <div className="absolute top-2 left-0 right-0 flex justify-center">
+        <CategoryTabs />
+      </div>
 
       <Card
         productName={product.title}
@@ -36,14 +38,7 @@ export const Tech = () => {
       <AnimatePresence>
         {selectedProduct && (
           <CardPopup
-            product={{
-              name: product.title,
-              image: product.img_link,
-              description: product.description,
-              price: product.price,
-              rating: product.ratings,
-              tags: [product.subCategory, product.mainCategory],
-            }}
+            product={product}
             onClose={() => setSelectedProduct(null)}
           />
         )}

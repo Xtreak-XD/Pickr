@@ -3,6 +3,12 @@ import { motion } from "framer-motion";
 
 export const CardPopup = ({ product, onClose }) => {
   if (!product) return null;
+  const linkName = document.createElement('a')
+  linkName.href = product.img_link
+
+  const tags = [product.subCategory, product.mainCategory]
+  const productPrice = product.price.split(" ")[0]
+  const productRating = product.ratings.split(" ")[0] // fix the rating name 
 
   return (
     <motion.div
@@ -28,19 +34,19 @@ export const CardPopup = ({ product, onClose }) => {
           ✕
         </button>
 
-        <h2 className="text-xl font-bold mb-2">{product.name}</h2>
+        <h2 className="text-xl font-bold mb-2">{product.title}</h2>
         <img
-          src={product.image || "/No Image.png"}
+          src={product.img_link || "/No Image.png"}
           alt={product.name}
           className="w-32 h-32 object-cover rounded-lg mx-auto mb-4"
         />
         <p className="text-gray-700 mb-2">{product.description || "No description available."}</p>
-        <p className="font-semibold mb-2">Price: ${product.price}</p>
-        <p className="mb-2">⭐ {product.rating || "N/A"}/5</p>
+        <p className="font-semibold mb-2">Price: {productPrice}</p>
+        <p className="mb-2">⭐ {productRating || "N/A"}/5</p>
 
-        {product.tags && (
+        {tags.filter(Boolean).length > 0 && (
           <div className="flex gap-2 flex-wrap mt-2">
-            {product.tags.map((tag, i) => (
+            {tags.filter(Boolean).map((tag, i) => (
               <span
                 key={i}
                 className="bg-purple-200 text-purple-800 px-2 py-1 text-xs rounded-full"
@@ -50,6 +56,7 @@ export const CardPopup = ({ product, onClose }) => {
             ))}
           </div>
         )}
+
       </motion.div>
     </motion.div>
   );

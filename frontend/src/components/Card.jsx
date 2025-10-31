@@ -9,6 +9,9 @@ export const Card = ({ productName, productImage, productPrice, onSwipe, onImage
       onSwipe("dislike");
     }
   }
+  
+  productName = productName.split(" ")[0]; 
+  productPrice = productPrice.split(" ")[0];
 
   return (
     <motion.div
